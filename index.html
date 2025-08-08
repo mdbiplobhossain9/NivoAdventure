@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nivo Adventure - 2D Platformer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="gameContainer">
+        <canvas id="gameCanvas" width="1024" height="576"></canvas>
+        
+        <!-- UI Elements -->
+        <div id="ui">
+            <div id="healthBar">
+                <div id="healthFill"></div>
+            </div>
+            <div id="score">Score: <span id="scoreValue">0</span></div>
+            <div id="level">Level: <span id="levelValue">1</span></div>
+        </div>
+        
+        <!-- Game Over Screen -->
+        <div id="gameOverScreen" class="screen hidden">
+            <h2>Game Over</h2>
+            <p>Your Score: <span id="finalScore">0</span></p>
+            <button id="restartBtn">Restart Game</button>
+            <button id="mainMenuBtn">Main Menu</button>
+        </div>
+        
+        <!-- Level Complete Screen -->
+        <div id="levelCompleteScreen" class="screen hidden">
+            <h2>Level Complete!</h2>
+            <p>Score: <span id="levelScore">0</span></p>
+            <button id="nextLevelBtn">Next Level</button>
+            <button id="levelRestartBtn">Restart Level</button>
+        </div>
+        
+        <!-- Start Screen -->
+        <div id="startScreen" class="screen">
+            <h1>Nivo Adventure</h1>
+            <p>Use ARROW KEYS or WASD to move, SPACE to jump</p>
+            <p>On mobile: Use touch controls</p>
+            <button id="startBtn">Start Game</button>
+        </div>
+        
+        <!-- Mobile Controls -->
+        <div id="mobileControls">
+            <button id="leftBtn" class="control-btn">◀</button>
+            <button id="rightBtn" class="control-btn">▶</button>
+            <button id="jumpBtn" class="control-btn">↑</button>
+        </div>
+    </div>
+    
+    <!-- Audio Elements -->
+    <audio id="jumpSound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmAaBSuNzfTNeCkFJH7M7eSLMwgYabrh3pJCCxFLpN7nsmEaBTaQ2+/BdSgHKYDL8+SMNgkDTKXe7bFdFgxImN7pp1MeCwdTqdvsrVkdCz2N0/PEeCoIKXzM+d2OOAceTKvi4alpFQxGo9zrr1sUBjqT3O/CdSgHKYHM9OWSNwABAAEAZmF3dGTWEQJtJwwUaLvt54RECxFLptLkr2AaBDGS1/DKfyQJKnjMjj2QSAAU" type="audio/wav">
+    </audio>
+    <audio id="collectSound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRnIAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YU4AAAC8tbZzxTu2M8WI1jPFj9YzxZ3WM8W31jPFydYzxZbWM8Ve1jPFKNYzxfXVM8Wl1TPFQ9UzxdTUM8VT1DPFCNQDF+jSGxee" type="audio/wav">
+    </audio>
+    <audio id="hitSound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRkoAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YSYAAABs0VPs0VPs0VPswsZT7NTBBf7h0lP7kdJT+5HSU/uR0lP7kdJT+w==" type="audio/wav">
+    </audio>
+    
+    <script src="js/utils.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/enemy.js"></script>
+    <script src="js/collectible.js"></script>
+    <script src="js/checkpoint.js"></script>
+    <script src="js/platform.js"></script>
+    <script src="js/background.js"></script>
+    <script src="js/level.js"></script>
+    <script src="js/input.js"></script>
+    <script src="js/camera.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

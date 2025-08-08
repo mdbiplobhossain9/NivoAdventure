@@ -1,0 +1,277 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+#gameContainer {
+    position: relative;
+    background: #222;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+#gameCanvas {
+    display: block;
+    background: linear-gradient(to bottom, #87CEEB 0%, #98FB98 100%);
+}
+
+/* UI Elements */
+#ui {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    color: white;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+#healthBar {
+    width: 200px;
+    height: 20px;
+    background: rgba(255, 0, 0, 0.3);
+    border: 2px solid #fff;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+#healthFill {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, #ff4444, #ff8888);
+    transition: width 0.3s ease;
+    border-radius: 8px;
+}
+
+#score, #level {
+    font-size: 18px;
+    margin-bottom: 5px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+/* Screen overlays */
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+    color: white;
+    text-align: center;
+}
+
+.screen.hidden {
+    display: none;
+}
+
+.screen h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #ffdd44;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+}
+
+.screen h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #ffdd44;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.screen p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    max-width: 600px;
+    line-height: 1.5;
+}
+
+.screen button {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1em;
+    border-radius: 25px;
+    cursor: pointer;
+    margin: 10px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.screen button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(45deg, #5a6fd8, #6a4190);
+}
+
+.screen button:active {
+    transform: translateY(0);
+}
+
+/* Mobile Controls */
+#mobileControls {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    z-index: 15;
+}
+
+.control-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    color: white;
+    font-size: 24px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    touch-action: manipulation;
+}
+
+.control-btn:hover,
+.control-btn.active {
+    background: rgba(255, 255, 255, 0.4);
+    border-color: rgba(255, 255, 255, 0.8);
+    transform: scale(1.1);
+}
+
+.control-btn:active {
+    transform: scale(0.95);
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    
+    #gameContainer {
+        border-radius: 0;
+        width: 100vw;
+        height: 100vh;
+    }
+    
+    #gameCanvas {
+        width: 100%;
+        height: 100%;
+    }
+    
+    #mobileControls {
+        display: block;
+    }
+    
+    #ui {
+        top: 10px;
+        left: 10px;
+    }
+    
+    #healthBar {
+        width: 150px;
+        height: 15px;
+    }
+    
+    #score, #level {
+        font-size: 14px;
+        padding: 3px 8px;
+    }
+    
+    .screen h1 {
+        font-size: 2em;
+    }
+    
+    .screen h2 {
+        font-size: 1.8em;
+    }
+    
+    .screen p {
+        font-size: 1em;
+        padding: 0 20px;
+    }
+    
+    .screen button {
+        padding: 12px 24px;
+        font-size: 1em;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .control-btn {
+        background: rgba(255, 255, 255, 0.3);
+    }
+}
+
+/* Animation classes */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+.fade-out {
+    animation: fadeOut 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* Loading animation */
+.loading {
+    position: relative;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    margin: auto;
+    border: 3px solid transparent;
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: spin 1s ease infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
